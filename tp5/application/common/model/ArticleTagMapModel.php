@@ -1,11 +1,10 @@
 <?php
-
 namespace app\common\model;
 
 use think\Model;
 
-class TextModel extends Model
+class ArticleTagMapModel extends Model
 {
 	protected $pk   = 'id';
-	protected $name = 'articles';
+	protected $name = 'article_tag_map';
 }

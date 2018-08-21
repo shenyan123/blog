@@ -44,9 +44,9 @@ Route::get('/admin/tag/:id/delete$', 'backend/Tag/delete')
 
 
 //文章管理
-Route::get('/admin/text','backend/Text/list')->name('admin_text_list');
+Route::get('/admin/article$', 'backend/Article/list')->name('admin_article_list');
+Route::rule('/admin/article/add$', 'backend/Article/add')->name('admin_article_add');
 
-Route::rule('/admin/text/add$','backend/Text/add')->name('admin_person_add');//添加文章
 
 //个人信息
 Route::get('/admin/person','backend/Person/list')->name('admin_person_list');
