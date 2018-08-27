@@ -7,25 +7,33 @@
           <h1 class="page-header">个人信息</h1>
         </div>
         <div class="col-lg-6">
-          <form>
+          <form action="{:url('admin_person_list')}" method="post">
             <div class="form-group">
               <label for="id_nickname">昵称</label>
-              <input type="text" class="form-control" id="id_nickname" placeholder="昵称">
+              <input type="text" class="form-control" id="id_nickname" name="nickname" value="{$user->nickname}" placeholder="昵称">
             </div>
             <div class="form-group">
               <label for="id_intro">个人简介</label>
-              <textarea class="form-control" id="id_intro" rows="5" placeholder="个人简介"></textarea>
+              <textarea class="form-control" id="id_intro" rows="5" name="intro" placeholder="个人简介">{$user->intro}</textarea>
             </div>
             <button type="submit" class="btn btn-primary">保存信息</button>
           </form>
         </div>
         <div class="col-lg-6">
-          <form class="text-center">
+          <form class="text-center" action="{:url('admin_avatar_change')}" method="post" enctype="multipart/form-data">
             <div class="form-group">
-              <img src="./images/header.jpg" alt="" class="img-circle img-responsive center-block">
+              {if $user->avatar}
+                <img src="__UPLOAD__/{$user->avatar}" alt="" style="width:200px;height:200px;" class="img-circle img-responsive img-avatar">
+              {else /}
+                <img src="__STATIC__/images/header.jpg" alt="" class="img-circle img-responsive">
+              {/if}
             </div>
-            <button type="button" class="btn btn-primary">上传头像</button>
+              <div class="form-group">
+                 <input type="file" name="file" id="">
+                  <p class="help-block">支持jpg,jpeg,png,gif类型的文件.文件大小不得超过2M</p>
+              </div>
+            <button type="submit" class="btn btn-primary">上传头像</button>
           </form>
         </div>
       </div>
-{/block}
+{/block}  

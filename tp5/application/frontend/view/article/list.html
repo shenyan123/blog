@@ -1,0 +1,41 @@
+{extend name="common/base" /}
+
+{block name="title"}  {__block__}{/block}
+
+{block name="content"}
+	
+    <div class="row">
+      <div class="col-md-3">
+       
+
+        <div class="hotArticle-list" data-url="{:url('ajex_hot_Article')}"></div>
+        
+        <div class="category-list" data-url="{:url('ajex_category_list')}"></div>
+        
+    </div>
+    <div class="col-md-9">
+      <ol class="breadcrumb">
+        <li><a href="{:url('homepage')}">首页</a></li>
+        <li class="active">文章列表</li>
+        {if $currcategory}
+        	<li class="active">{$currcategory->name}</li>
+        {/if}
+      </ol>
+      <div class="post-list list-group">
+	      {foreach $articles as $article }
+        	 <h4 class="list-group-item-heading">
+			    <a href="{:url('admin_list_detail','id='.$article->id)}">{$article->title}</a>
+			  </h4>
+			  <p>
+			    <span class="label label-info"><b>{$article->created_time|date='Y年m月d日 H时i分'}</b></span> &nbsp;&nbsp;&nbsp;阅读 <span class="badge">{$article->views}</span>
+			  </p>
+			  <p class="subtitle">
+			    {$article->sub_title}
+			  </p>
+	      {/foreach}
+      </div>
+      
+      {$page|raw}
+    </div>
+  </div>
+{/block}

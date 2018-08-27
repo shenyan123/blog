@@ -48,3 +48,36 @@ create table blog_article_tag_map(
 	tag_id int not null default 0,
 	primary key(id)
 )ENGINE innodb CHARSET utf8;
+
+
+create table city(
+	id int not null auto_increment,
+	city varchar(128) not null default'',
+	provinceId varchar(32) not null,
+	primary key(id)	
+)ENGINE innodb CHARSET utf8;
+
+create table province(
+	id int not null auto_increment,
+	province varchar(128) not null,
+	primary key(id)	
+)ENGINE innodb CHARSET utf8;
+
+
+create table user (
+	id int not null auto_increment,
+	password varchar(32) not null default '',
+	email  varchar(128) not null default '',
+	primary key(id)
+)ENGINE innodb CHARSET utf8;
+
+create table board(
+	id int not null auto_increment,
+	word_id int not null default 0,
+	title varchar(128) not null default'',
+	content text default null,
+	push_time int not null default 0,
+	status tinyint(1) default [(0,'未审核'),(1,'审核')],
+	primary key(id),
+	index(word_id)
+)ENGINE innodb CHARSET utf8;

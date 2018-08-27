@@ -1,0 +1,11 @@
+ <div class="visible-md visible-lg">
+          <div class="panel panel-custom">
+            <div class="panel-heading">相关文章</div>
+            <div class="list-group list-group-flush">
+
+              {foreach $articles as $articleQ } 
+               <a href="{:url('admin_list_detail','id='.$articleQ->id)}" class="list-group-item">{$articleQ->title}</a>
+              {/foreach}
+          </div>
+       </div>
+</div>

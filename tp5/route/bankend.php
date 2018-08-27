@@ -46,7 +46,14 @@ Route::get('/admin/tag/:id/delete$', 'backend/Tag/delete')
 //文章管理
 Route::get('/admin/article$', 'backend/Article/list')->name('admin_article_list');
 Route::rule('/admin/article/add$', 'backend/Article/add')->name('admin_article_add');
+Route::rule('/admin/article/:id/edit$', 'backend/Article/edit')
+		->pattern(['id'=>'\d+'])
+		->name('admin_article_edit');//编辑分类
 
+Route::get('/admin/article/:id/delete$', 'backend/Article/delete')
+		->pattern(['id'=>'\d+'])
+		->name('admin_article_delete');//删除分类
 
 //个人信息
-Route::get('/admin/person','backend/Person/list')->name('admin_person_list');
+Route::rule('/admin/person$','backend/Person/list')->name('admin_person_list');
+Route::post('/admin/avatar/change$','backend/Person/avatarChange')->name('admin_avatar_change');
